@@ -1,0 +1,31 @@
+
+<div class="form-group row">
+    <label for="quote_type" class="col-md-4 col-form-label">Quote ID</label>
+    <input type="text" class="form-control col-md-6" [(ngModel)]="quoteID" id="quote_type" readonly>
+</div> 
+<div class="form-group row">
+    <label for="quote_type" class="col-md-4 col-form-label">Quote Type</label>
+    <input type="text" class="form-control col-md-6" [(ngModel)]="quote_Type" id="quote_type">
+</div> 
+<div class="form-group row">
+    <label for="contact" class="col-md-4 col-form-label">Contact</label>
+    <input type="text" class="form-control col-md-6" [(ngModel)]="contact" id="contact">
+</div>
+<div class="form-group row">
+    <label for="task" class="col-md-4 col-form-label">Task</label>
+    <input type="text" class="form-control col-md-6" [(ngModel)]="task" id="task">
+</div>
+<div class="form-group row">
+    <label for="Due_date" class="col-md-4 col-form-label">Due Date</label>
+    <input type="text" class="form-control col-md-6" [(ngModel)]="due_Date" id="Due_date">
+</div>
+<div class="form-group row">
+    <label for="task_type" class="col-md-4 col-form-label">Task Type</label>
+    <input type="text" class="form-control col-md-6" [(ngModel)]="task_type" id="task_type">
+</div>
+
+<button (click)="addQuote()" *ngIf="Quote.quoteID==0" class="btn btn-primary">Add</button>
+
+<button (click)="updateQuote()" *ngIf="Quote.quoteID != 0" class="btn btn-primary">Update</button>
+
+

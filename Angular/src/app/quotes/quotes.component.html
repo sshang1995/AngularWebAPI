@@ -1,0 +1,81 @@
+<br>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ViewModal"
+(click)="addClick()" data-backdrop="static"data-keyboard="false">Add new task</button>
+<br>
+<br>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>QuoteID</th>
+            <th>Quote Type</th>
+            <th>Contact</th>
+            <th>Task</th>
+            <th>Due Date</th>
+            <th>Taks Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let dataItem of QuotesList">
+            <td>{{dataItem.quoteID}}</td>
+            <td>{{dataItem.quote_Type}}</td>
+            <td>{{dataItem.contact}}</td>
+            <td>{{dataItem.task}}</td>
+            <td>{{dataItem.due_Date}}</td>
+            <td>{{dataItem.task_type}}</td>
+            <td>
+                <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#ViewbtnModal"
+                (click)="viewClick(dataItem)" data-backdrop="static"data-keyboard="false" >View</button>
+                <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#ViewModal"
+                (click)="editClick(dataItem)" data-backdrop="static"data-keyboard="false">Edit</button>
+                <button type="button" class="btn btn-light mr-1" (click)="deleteClick(dataItem.quoteID)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+
+    <!-- Edit modal -->
+    <div class="modal fade" id="ViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+              (click)="closeClick()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <app-add-edit-quotes [Quote]="Quote" *ngIf="ActivateAddEditQuote"></app-add-edit-quotes>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save</button>
+              
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+
+      <!-- View modal -->
+    <div class="modal fade" id="ViewbtnModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">View Detail</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+              (click)="closeClick2()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <app-show-quotes [Quote]="Quote" *ngIf="ActivateShowQuote"></app-show-quotes>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save</button>
+              
+            </div> -->
+          </div>
+        </div>
+      </div>
+</table>
