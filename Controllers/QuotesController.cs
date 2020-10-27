@@ -9,12 +9,14 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using WebAPI;
 using WebAPI.Data;
 using WebAPI.Models;
 
 namespace TaskManagement.Controllers
 {
-   // [Authorize]
+    // [Authorize]
+    
     public class QuotesController : ApiController
     {
         //private QuoteContext db = new QuoteContext();
