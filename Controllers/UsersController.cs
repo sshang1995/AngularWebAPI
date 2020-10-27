@@ -13,6 +13,7 @@ using WebAPI.Models;
 
 namespace TaskManagement.Controllers
 {
+    
     public class UsersController : ApiController
     {
         //private UserContext db = new UserContext();
@@ -30,6 +31,32 @@ namespace TaskManagement.Controllers
         public IHttpActionResult GetUser(string name)
         {
             User user = db.Users.Where(x => (x.Name == name)).FirstOrDefault();
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
+        //GET: api/users/name and password
+        [ResponseType(typeof(User))]
+        public IHttpActionResult GetUserLogin(string name, string password)
+        {
+            User user = db.Users.Where(x => (x.Name == name && x.Password == password )).FirstOrDefault();
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
+        //GET: api/users/name or email 
+        [ResponseType(typeof(User))]
+        public IHttpActionResult GetUserExist(string name, string email)
+        {
+            User user = db.Users.Where(x => (x.Name == name || x.Email == email)).FirstOrDefault();
             if (user == null)
             {
                 return NotFound();

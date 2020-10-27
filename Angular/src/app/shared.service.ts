@@ -35,7 +35,18 @@ readonly APIUrl="https://localhost:44319/api";
   }
 
   getUser(val:any){
+   
     return this.http.get(this.APIUrl+'/users/'+val)
+  }
+
+  getUserLogin(name:any, password: any){
+   
+    return this.http.get(this.APIUrl+'/users?name='+name+'&password='+password)
+  }
+
+  getUserExist(name:any, email: any){
+   
+    return this.http.get(this.APIUrl+'/users?name='+name+'&email='+email)
   }
 
   addUser(val:any){

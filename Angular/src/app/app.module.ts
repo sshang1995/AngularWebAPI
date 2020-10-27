@@ -11,6 +11,7 @@ import {SharedService} from './shared.service';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
     QuotesComponent,
     ShowQuotesComponent,
     AddEditQuotesComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
 
   ],
   imports: [

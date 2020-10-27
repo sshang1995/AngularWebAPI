@@ -1,1 +1,87 @@
-<p>login works!</p>
+ 
+<form class="needs-validation" novalidate>
+    <div class="form-horizontal">
+      <h4>User Login</h4>
+      <hr>
+      <div class="form-group row ">
+        <label for="validationInputName" class="col-md-4 col-form-label">Name</label>
+        <input type="text" class="form-control col-md-6" [(ngModel)]='Name' id="validationInputName" name="username" required>
+        <div class="invalid-feedback">
+            Please input a username.
+        </div>
+    
+      </div>
+      <div class="form-group row">
+        <label for="exampleInputPassword1" class="col-md-4 col-form-label">Password</label>
+        <input type="password" class="form-control col-md-6" [(ngModel)]='Password' id="exampleInputPassword1" name="password" required>
+      </div>
+     
+      <button type="submit" class="btn btn-primary login" (click)="LoginClick()">Login</button> 
+     
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Signup</button>
+      
+      
+          <!-- Sign up modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group row">
+                <label for="username" class="col-md-4 col-form-label">Name</label>
+                <input type="text" class="form-control col-md-6" [(ngModel)]='Name' id="username" name="username" required>
+              </div>
+              <div class="form-group row">
+                <label for="exampleInputEmail1" class="col-md-4 col-form-label">Email address</label>
+                <input type="email" class="form-control col-md-6"[(ngModel)]='Email' name = "Email" id="exampleInputEmail1" placeholder="name@example.com" required>
+              </div>
+              <div class="form-group row">
+                <label for="Password1" class="col-md-4 col-form-label">Password</label>
+                <input type="password" class="form-control col-md-6" [(ngModel)]='Password' name="Password" id="Password1" required>
+              </div>
+              <div class="form-group row">
+                <label for="confirmPassword" class="col-md-4 col-form-label">Confirm Password</label>
+                <input type="password" class="form-control col-md-6" [(ngModel)]='Password' name="confirmPassword" id="confirmPassword" compare>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="SignupClick()">Sign Up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</form>
+
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName("needs-validation");
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener("submit", function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add("was-validated");
+          }, false);
+        });
+      }, false);
+    })();
+</script> 
+
+
+
+
