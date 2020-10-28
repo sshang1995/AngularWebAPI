@@ -17,7 +17,10 @@ export class LoginComponent implements OnInit {
 
   
   @Input() user:any;
-  
+
+  token:any;
+  auth:any;
+
   Name:string;
   Email:string;
   Password:string;

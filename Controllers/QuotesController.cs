@@ -15,8 +15,7 @@ using WebAPI.Models;
 
 namespace TaskManagement.Controllers
 {
-    // [Authorize]
-    
+    //[WebAPI.Authorize]
     public class QuotesController : ApiController
     {
         //private QuoteContext db = new QuoteContext();

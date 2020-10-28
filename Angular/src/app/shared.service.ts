@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -51,6 +51,17 @@ readonly APIUrl="https://localhost:44319/api";
 
   addUser(val:any){
     return this.http.post(this.APIUrl+'/users',val)
+  }
+
+  getToken(name:any, password:any){
+    let body = new URLSearchParams();
+    body.set('username',name);
+    body.set('password', password);
+    body.set('grant-type',"password")
+    let options ={
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    }
+    return this.http.post("https://localhost:44319/token",body.toString(), options) 
   }
 
 }
