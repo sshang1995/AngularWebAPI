@@ -8,9 +8,11 @@ import { ShowQuotesComponent } from './quotes/show-quotes/show-quotes.component'
 import { AddEditQuotesComponent } from './quotes/add-edit-quotes/add-edit-quotes.component';
 import { LoginComponent } from './login/login.component';
 import {SharedService} from './shared.service';
+import{ FilterTextboxComponent} from './quotes/filter-textbox.component';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+
 
 
 
@@ -20,7 +22,8 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
     QuotesComponent,
     ShowQuotesComponent,
     AddEditQuotesComponent,
-    LoginComponent
+    LoginComponent,
+    FilterTextboxComponent
  
 
   ],

@@ -66,8 +66,27 @@ export class QuotesComponent implements OnInit {
   }
 
   closeClick2(){
+    //close click for view button
     this.ActivateShowQuote=false;
     this.refreshQuotesList();
+  }
+
+  // sort(prop:string){
+  //   //sorter service will handle the sorting
+  // }
+
+  filter(data: string){
+    if(data){
+      this.QuotesList = this.QuotesList.filter((Quote)=>{
+        return Quote.contact.indexOf(data) >-1 ||
+                Quote.task_type.indexOf(data) >-1 ||
+                Quote.due_Date.indexOf(data) >-1;
+                
+      });
+
+    }else {
+      this.refreshQuotesList();
+    }
   }
 
   refreshQuotesList(){

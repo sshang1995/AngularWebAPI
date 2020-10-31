@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -51,6 +52,10 @@ readonly APIUrl="https://localhost:44319/api";
 
   addUser(val:any){
     return this.http.post(this.APIUrl+'/users',val)
+  }
+
+  deleteUser(name:any){
+    return this.http.delete(this.APIUrl+'/users?name='+ name)
   }
 
   getToken(name:any, password:any){

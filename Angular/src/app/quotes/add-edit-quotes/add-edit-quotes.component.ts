@@ -36,9 +36,11 @@ export class AddEditQuotesComponent implements OnInit {
       task_type:this.task_type
 
     }
-    this.service.addQuotes(q).subscribe(res=>{
+    this.service.addQuotes(q).subscribe(
+      res=>{
       alert("Add new Task success");
-    });
+      }
+    );
 
   }
 

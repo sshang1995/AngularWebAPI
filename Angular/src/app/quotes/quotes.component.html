@@ -1,4 +1,7 @@
 <br>
+<filter-textbox (changed)="filter($event)"></filter-textbox>
+<br>
+<br>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ViewModal"
 (click)="addClick()" data-backdrop="static"data-keyboard="false">Add new task</button>
 <br>
@@ -79,3 +82,5 @@
         </div>
       </div>
 </table>
+<b>Number of Tasks:</b> {{QuotesList.length}}
+<br />

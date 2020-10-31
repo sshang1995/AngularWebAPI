@@ -2,7 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import {Router} from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { SharedService } from '../shared.service';
-
+import * as jwt from 'jsonwebtoken';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(private service:SharedService, private route:Router) { };
 
   
-  @Input() user:any;
+  @Input() user:any; 
 
   token:any;
   auth:any;
@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   Name:string;
   Email:string;
   Password:string;
+  ConfirmPassword:string;
 
   ngOnInit(): void {
     // this.Name = this.user.Name;
@@ -38,7 +39,8 @@ export class LoginComponent implements OnInit {
       this.user = {
         UserName:'',
         Password:'',
-        Email:''
+        Email:'',
+        ConfirmPassword:''
       }
     }  
   };
@@ -47,10 +49,10 @@ export class LoginComponent implements OnInit {
 
     var u ={
       Name: this.Name,
-      Email: this.Email,
+      // Email: this.Email,
       Password: this.Password
     }
-
+    
     this.service.getUserLogin(u.Name, u.Password).subscribe(
       res => {
         alert("Login Success");
@@ -58,9 +60,11 @@ export class LoginComponent implements OnInit {
       },
       error => {
         alert("Wrong Password or Name");
-      }
-        
+      }  
     )
+    // var payload = {name: u.Name, password:u.Password };
+    // var token = jwt.sign(payload,'secretKey');
+    // alert(token);
   };
 
   SignupClick(){
@@ -70,6 +74,8 @@ export class LoginComponent implements OnInit {
       Password: this.Password
     }
 
+    var confirmpassword = this.ConfirmPassword;
+
     this.service.getUserExist(u.Name,u.Email).subscribe(
       res => {
         alert("User exist");
@@ -77,7 +83,28 @@ export class LoginComponent implements OnInit {
       error =>{
         this.service.addUser(u).subscribe(
           res => {
-            alert("Add New User Success");
+            // let payload = {name: u.Name, password:u.Password };
+            // let token = jwt.sign(payload,'secretKey');
+            // alert(token);
+            if(
+              u.Name != null &&
+              u.Email != null &&
+              u.Password != null )
+              {
+                if (confirmpassword == u.Password){
+                  alert("Add User success");
+                }else{
+                  alert("Password and confirm Password does not match "+this.ConfirmPassword+' ' + u.Password)
+                  this.service.deleteUser(u.Name).subscribe();
+                }
+                
+              } else{
+                alert("please insert all values")
+              }
+           
+          },
+          error => {
+             alert("Cannot Add new User")
           }
         )
 
