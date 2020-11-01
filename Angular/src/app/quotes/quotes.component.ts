@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { take } from 'rxjs-compat/operator/take';
-import {SharedService} from 'src/app/shared.service'
+import {SharedService} from 'src/app/shared.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-quotes',
   templateUrl: './quotes.component.html',
@@ -8,7 +9,7 @@ import {SharedService} from 'src/app/shared.service'
 })
 export class QuotesComponent implements OnInit {
 
-  constructor(private service: SharedService) { }
+  constructor(private service: SharedService, private route:Router) { }
 
   QuotesList:any=[];
 
@@ -74,6 +75,12 @@ export class QuotesComponent implements OnInit {
   // sort(prop:string){
   //   //sorter service will handle the sorting
   // }
+
+  LogoutClick(){
+    localStorage.removeItem('userToken');
+    localStorage.removeItem('token_type');
+    this.route.navigate(['/login']);
+  }
 
   filter(data: string){
     if(data){

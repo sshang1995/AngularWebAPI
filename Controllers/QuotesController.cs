@@ -24,6 +24,7 @@ namespace TaskManagement.Controllers
         private TMEntities db = new TMEntities();
 
         // GET: api/Quotes
+        [WebAPI.Authorize]
         public IQueryable<Quote> GetQuotes()
         {
             return db.Quotes;
@@ -90,6 +91,7 @@ namespace TaskManagement.Controllers
         }
 
         // POST: api/Quotes
+        [WebAPI.Authorize]
         [ResponseType(typeof(Quote))]
         public IHttpActionResult PostQuote(Quote quote)
         {

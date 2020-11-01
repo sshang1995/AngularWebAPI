@@ -12,7 +12,8 @@ readonly APIUrl="https://localhost:44319/api";
   constructor(private http:HttpClient) { }
 
   getQuotesList():Observable<any[]>{
-    return this.http.get<any>(this.APIUrl+'/quotes');
+    var Header = new HttpHeaders({'Authorization': localStorage.getItem('token_type') + ' '+ localStorage.getItem('userToken')});
+    return this.http.get<any>(this.APIUrl+'/quotes', {headers:Header});
   }
 
   getQuote(val:any){
@@ -20,7 +21,8 @@ readonly APIUrl="https://localhost:44319/api";
   }
 
   addQuotes(val:any){
-    return this.http.post(this.APIUrl+'/quotes',val)
+    var Header = new HttpHeaders({'Authorization': localStorage.getItem('token_type') + ' '+ localStorage.getItem('userToken')});
+    return this.http.post(this.APIUrl+'/quotes',val, {headers:Header})
   }
 
   updateQuotes(id:any,val:any){
@@ -62,11 +64,14 @@ readonly APIUrl="https://localhost:44319/api";
     let body = new URLSearchParams();
     body.set('username',name);
     body.set('password', password);
-    body.set('grant-type',"password")
+    body.set('grant_type',"password")
     let options ={
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
     }
-    return this.http.post("https://localhost:44319/token",body.toString(), options) 
+
+    // var data = "username="+ name + "&password=" + password +"&grant_type=password";
+    // var Header = new HttpHeaders({'Content-Type':'application/x-www-urlencoded'});
+    return this.http.post("https://localhost:44319/token",body.toString(), options);
   }
 
 }

@@ -55,6 +55,11 @@ export class LoginComponent implements OnInit {
     
     this.service.getUserLogin(u.Name, u.Password).subscribe(
       res => {
+        this.service.getToken(u.Name, u.Password).subscribe((data : any) => {
+
+          localStorage.setItem('userToken',data.access_token);
+          localStorage.setItem('token_type',data.token_type);
+        });
         alert("Login Success");
         this.route.navigate(['/quotes']);
       },

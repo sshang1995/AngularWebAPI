@@ -16,7 +16,7 @@ namespace WebAPI
             // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=316888
 
             //enable cors origin request
-           // app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+           app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
             var myProvider = new MyAuthorizationProvider();
             OAuthAuthorizationServerOptions options = new OAuthAuthorizationServerOptions

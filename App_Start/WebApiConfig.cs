@@ -36,8 +36,8 @@ namespace WebAPI
             //config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
             // Enable CORS for the Angular App
-            var cors = new EnableCorsAttribute("*", "*", "*"); /*http://localhost:4200*/
-            config.EnableCors(cors);
+            //var cors = new EnableCorsAttribute("http://localhost:4200", "*", "*"); /*http://localhost:4200*/
+            //config.EnableCors(cors);
 
             var jsonFormatter = config.Formatters.JsonFormatter;
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
